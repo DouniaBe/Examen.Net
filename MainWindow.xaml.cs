@@ -55,10 +55,18 @@ namespace Examen.Net
 
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
-            if (ProductsListBox.SelectedItem is Models.Product selectedProduct)
+            try
             {
-                cart.Add(selectedProduct);
-                RefreshCartListBox();
+                if (ProductsListBox.SelectedItem is Models.Product selectedProduct)
+                {
+                    cart.Add(selectedProduct);
+                    RefreshCartListBox();
+                    StatusLabel.Text = $"{selectedProduct.Name} toegevoegd aan het winkelmandje.";
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorStatus.Text = $"Fout bij het toevoegen aan het winkelmandje: {ex.Message}";
             }
         }
 

@@ -31,5 +31,4 @@ namespace Examen.Net.Data
                 .HasForeignKey(o => o.ProductId);
         }
     }
-
 }
